@@ -38,18 +38,24 @@ setInterval(changeText,3000)
 
 // Circle Skill //////////////////////////////////
 const circles = document.querySelectorAll('.circle');
-circles.forEach(elem=>{
-    var dots = elem.getAttributes("data-dots");
-    var marked = elem.getAttributes("data-percent");
-    var percent = Math.floor(dots*marked/100);
+circles.forEach(elem => {
+    var dots = parseInt(elem.getAttribute("data-dots"));
+    var marked = parseInt(elem.getAttribute("data-percent"));
+    var percent = Math.floor(dots * marked / 100);
     var points = "";
     var rotate = 360 / dots;
 
-    for(let i = 0 ; i < dots ; i++){
-        points += '<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>';
+    for (let i = 0; i < dots; i++) {
+        points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
     }
     elem.innerHTML = points;
-})
+
+    const pointsMarked = elem.querySelectorAll('.points');
+    for(let i = 0; i<percent ; i++){
+        pointsMarked[i].classList.add("marked")
+    }
+});
+
 
 
 
