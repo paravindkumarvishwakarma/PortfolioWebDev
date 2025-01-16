@@ -10,6 +10,17 @@ words.forEach((word)=>{
     })  
 });
 
+// JavaScript to update the browser's tab title based on the clicked section
+document.querySelectorAll('.navlist li a').forEach(link => {
+    link.addEventListener('click', (event) => {
+        // Get the text of the clicked link
+        const tabName = event.target.textContent.trim();
+        // Update the document title
+        document.title = `Paravind | ${tabName}`;
+    });
+});
+
+
 let currentWordIndex = 0;
 let maxWordIndex = words.length -1;
 words[currentWordIndex].style.opacity = "1";
